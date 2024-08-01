@@ -41,16 +41,10 @@ LANGUAGE = os.environ.get('LANGUAGE', 'English')
 
 LANGUAGES = {
     "English": False,
-    "Simplified Chinese": False,
-    "Traditional Chinese": False,
-    "Russian": False,
 }
 
 LANGUAGES_TO_CODE = {
     "English": "en",
-    "Simplified Chinese": "zh",
-    "Traditional Chinese": "zh-hk",
-    "Russian": "ru",
 }
 
 current_date = datetime.now()
@@ -227,8 +221,8 @@ def update_info_message(user_id = None):
         f"**🔑 API:** `{replace_with_asterisk(api_key)}`\n\n" if api_key else "",
         f"**🔗 API URL:** `{api_url}`\n\n" if api_url else "",
         f"**🛜 WEB HOOK:** `{WEB_HOOK}`\n\n" if WEB_HOOK else "",
-        f"**🚰 Tokens usage:** `{get_robot(user_id)[0].tokens_usage[str(user_id)]}`\n\n" if get_robot(user_id)[0] else "",
-        f"**🃏 NICK:** `{NICK}`\n\n" if NICK else "",
+        f"**🚰 Tokens gebrikt:** `{get_robot(user_id)[0].tokens_usage[str(user_id)]}`\n\n" if get_robot(user_id)[0] else "",
+        f"**🃏 Oproepnaam:** `{NICK}`\n\n" if NICK else "",
         f"**📖 Version:** `{check_for_updates()}`\n\n",
     ])
 
@@ -336,7 +330,7 @@ def create_buttons(strings, plugins_status=False, lang="English", button_text=No
 
 initial_model = [
     "gpt-4o",
-    "gpt-4-turbo-2024-04-09",
+    "gpt-4o-mini-2024-07-18",
     "gpt-3.5-turbo",
     "claude-3-opus-20240229",
     "claude-3-5-sonnet-20240620",
