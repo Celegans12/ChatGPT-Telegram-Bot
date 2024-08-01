@@ -563,8 +563,6 @@ async def start(update, context): # 当用户输入/start时，返回文本
         update_language_status("English", chat_id=convo_id)
     message = (
         f"Hi `{user.username}` ! I am an Assistant, a large language model trained by _OpenAI_. I will do my best to help answer your questions.\n\n"
-        # "Welcome to visit https://github.com/yym68686/ChatGPT-Telegram-Bot to view the source code.\n\n"
-        # "If you find any bugs, you can contact @yym68686."
     )
     if (len(context.args) == 2):
         api_url = context.args[0]
@@ -599,11 +597,9 @@ async def post_init(application: Application) -> None:
         BotCommand('info', 'Basic information'),
         BotCommand('reset', 'Reset the bot'),
         BotCommand('start', 'Start the bot'),
-        BotCommand('en2zh', 'Translate to Chinese'),
-        BotCommand('zh2en', 'Translate to English'),
     ])
     description = (
-        "I am an Assistant, a large language model trained by OpenAI. I will do my best to help answer your questions."
+        "Ik ben een zoefi slaaf. Gebruik mij."
     )
     await application.bot.set_my_description(description)
 
@@ -629,8 +625,6 @@ if __name__ == '__main__':
     application.add_handler(CommandHandler("info", info))
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("reset", reset_chat))
-    application.add_handler(CommandHandler("en2zh", lambda update, context: command_bot(update, context, "Simplified Chinese")))
-    application.add_handler(CommandHandler("zh2en", lambda update, context: command_bot(update, context, "english")))
     application.add_handler(InlineQueryHandler(inlinequery))
     application.add_handler(CallbackQueryHandler(button_press))
     application.add_handler(MessageHandler((filters.TEXT | filters.VOICE) & ~filters.COMMAND, lambda update, context: command_bot(update, context, prompt=None, has_command=False), block = False))
